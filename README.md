@@ -1,6 +1,6 @@
 <div align="center">
-<img width="30%" src="">
-![cubimal-npc-greeterbot](https://github.com/user-attachments/assets/e5996828-8448-4ac4-9bdf-782cd04f8c4f)
+<img width="30%" src="https://github.com/Navi1313/chatcircle/blob/main/static/images/logo.svg">
+
 
 ![Uploading cubimal-npc-greeterbot.svg…]()
 # CHAT CIRCLE
