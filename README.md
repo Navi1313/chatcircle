@@ -1,8 +1,8 @@
 <div align="center">
 <img width="30%" src="">
-![Uploading cubimal-npc-greeterbot.svg…]()
-![cubimal-npc-greeterbot](https://github.com/user-attachments/assets/cb3aef91-aacc-4367-8987-81fa94471452)
+![cubimal-npc-greeterbot](https://github.com/user-attachments/assets/e5996828-8448-4ac4-9bdf-782cd04f8c4f)
 
+![Uploading cubimal-npc-greeterbot.svg…]()
 # CHAT CIRCLE
 </div>
 
