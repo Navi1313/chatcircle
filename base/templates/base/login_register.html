@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<main class="auth layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle">
+          <a href="{% url 'home' %}">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>arrow-left</title>
+              <path
+                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z"
+              ></path>
+            </svg>
+          </a>
+          <h3>{% if page == 'loginpage' %}Login{% else %}Sign Up{% endif %}</h3>
+        </div>
+      </div>
+      <div class="layout__body">
+        {% if page == 'loginpage' %}
+        <h2 class="auth__tagline">Connecet with your Circles </h2>
+        <form class="form" action="#" method="POST">
+          {% csrf_token %}
+          <div class="form__group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="text" placeholder="Enter your email.." />
+          </div>
+          <div class="form__group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Enter your password.." />
+          </div>
+          <button class="btn btn--main" type="submit">
+            Login
+          </button>
+        </form>
+        <div class="auth__action">
+          <p>Haven't signed up yet?</p>
+          <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+        </div>
+        {% else %}
+        
+        <form class="form" action="#" method="POST">
+          <h2 class="auth__tagline">Find Your Peers</h2>
+          {% csrf_token %}
+          {% for field in form %}
+          <div class="form__group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          </div>
+          {% endfor %}
+          <button class="btn btn--main" type="submit">
+            Sign Up
+          </button>
+        </form>
+        <div class="auth__action">
+          <p>Already signed up?</p>
+          <a href="{% url 'login' %}" class="btn btn--link">Login</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
