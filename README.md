@@ -1,8 +1,6 @@
 <div align="center">
-<img width="30%" src="https://github.com/Navi1313/chatcircle/blob/main/static/images/logo.svg">
+<img width="20%" src="https://github.com/Navi1313/chatcircle/blob/main/static/images/logo.svg">
 
-
-![Uploading cubimal-npc-greeterbot.svg…]()
 # CHAT CIRCLE
 </div>
 
