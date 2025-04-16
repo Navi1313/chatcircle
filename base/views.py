@@ -10,13 +10,6 @@ from .models import Room , Topic , Messege , User
 from .forms import RoomForm , UserForm , CustomUserCreationForm
 from django.contrib.auth.views import LoginView
 
-# Create your views here.
-
-# rooms = [
-#     {'id' : 1 , 'name' : 'Lets Discuss the Philosopy'},
-#     {'id' : 2 , 'name' : 'Lets have the Interview Talk '},
-#     {'id' : 3 , 'name' : 'Lets play the Chess online'},
-# ]
 
 class MyLoginView(LoginView):
     def form_valid(self, form):
@@ -52,24 +45,6 @@ def loginPage(request):
     return render(request , 'base/login_register.html', context)
 
 
-
-
-# def registerUser(request):
-#     form = UserCreationForm()
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.username = user.username.lower()
-#             user.save()
-#             login(request , user)
-#             return redirect('home')
-#         else:
-#             messages.error(request , 'Invalid form')
-            
-#     return render(request , 'base/login_register.html' ,{'form': form})
-
-
 def registerUser(request):
     form = CustomUserCreationForm()
     if request.method == 'POST':
@@ -86,13 +61,9 @@ def registerUser(request):
             
     return render(request, 'base/login_register.html', {'form': form})
 
-
 def logoutUser(request):
     logout(request)
     return redirect('home')
-
-
-
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -111,7 +82,6 @@ def home(request):
         'room_messeges':room_messeges
         }
     return render(request, 'base/home.html' , context)
-
 
 @login_required(login_url='login')
 def room(request , pk):
@@ -136,7 +106,6 @@ def room(request , pk):
     context = {'room' : room , 'room_messeges':room_messeges , 'participants': participants}   
     return render(request , 'base/room.html' , context)
 
-
 def user_profile(request , pk):
     user = User.objects.get(id = pk) 
     room_messeges = user.messege_set.all()
@@ -144,7 +113,6 @@ def user_profile(request , pk):
     topic  = Topic.objects.all()
     context ={'user' : user , 'rooms' : rooms ,'room_messeges' :room_messeges , 'topic' : topic}
     return render(request , 'base/profile.html', context ) 
-
 
 @login_required(login_url = 'login')
 def create_room(request):
@@ -165,8 +133,6 @@ def create_room(request):
     context = {'form' : form , 'topics': topics}
     return render(request , 'base/room_form.html' , context)
 
-
-
 @login_required(login_url = 'login')
 def update_room(request , pk):
     topics = Topic.objects.all()
@@ -186,7 +152,6 @@ def update_room(request , pk):
     context = {'form' : form , 'topics': topics , 'room':room }
 
     return render(request , 'base/room_form.html' , context)
-
 
 
 @login_required(login_url = 'login')
@@ -232,3 +197,28 @@ def activity_page(request):
     room_messeges = Messege.objects.all()
     
     return render(request , 'base/activity.html' , {'room_messeges':room_messeges } )
+
+
+
+# def registerUser(request):
+#     form = UserCreationForm()
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save(commit=False)
+#             user.username = user.username.lower()
+#             user.save()
+#             login(request , user)
+#             return redirect('home')
+#         else:
+#             messages.error(request , 'Invalid form')
+            
+#     return render(request , 'base/login_register.html' ,{'form': form})
+
+# Create your views here.
+
+# rooms = [
+#     {'id' : 1 , 'name' : 'Lets Discuss the Philosopy'},
+#     {'id' : 2 , 'name' : 'Lets have the Interview Talk '},
+#     {'id' : 3 , 'name' : 'Lets play the Chess online'},
+# ]
